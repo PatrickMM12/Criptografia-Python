@@ -15,20 +15,20 @@ def selecione(opcao):
         opcao = input('\n Opção inválida. Selecione uma opção:\n\n >>> ')
         print('\n', '_' * 80,)
 
-    if opcao == '1':     # Opção 1 chamará o modulo para leitura e criptografia do texto, e criação da chave criptografica, para ao fim gravar o texto criptografado em um arquivo
+    if opcao == '1':     # Opção 1 chamará o modulo para leitura e criptografia do texto, e criação da chave criptográfica, para ao fim gravar o texto criptografado em um arquivo
 
-        cripto(texto, cript)
+        criptografar(texto, cript)
 
-    elif opcao == '2':     # Opção 2 chamará o modulo para leitura da chave criptografica e descriptografia do texto através da leitura do arquivo
+    elif opcao == '2':     # Opção 2 chamará o modulo para leitura da chave criptográfica e descriptografia do texto através da leitura do arquivo
 
-        descript(dcript, descriptografia,totalCharactere, chave)
+        descriptografia(dcript, descriptografia,totalCharactere, chave)
 
     elif opcao == '3': # Opção 3 encerrará o programa
         print('\n                           <<< PROGRAMA ENCERRADO >>>\n',('_')*80)
         exit()
 
 # Modulo para criptografia do texto
-def cripto(texto, cript):
+def criptografar(texto, cript):
 
     texto = input('\n\n Insira um texto a ser CRIPTOGRAFADO de até 128 caracteres:\n\n  >>> ')
     while len(texto) <= 0 or len(texto) >= 129:
@@ -41,7 +41,7 @@ def cripto(texto, cript):
     textoScript = texto.strip()
     totalCharactere = len(textoScript)
     
-    chave = totalCharactere * 2357 # A chave criptografica é igual a multiplicação do total de caracteres do texto por 2357, aleatóriamente escolhido
+    chave = totalCharactere * 2357 # A chave criptográfica é igual a multiplicação do total de caracteres do texto por 2357, aleatóriamente escolhido
 
 
     # DUPLA criptografia: Primeiramente embaralha os caracteres e em seguida os substitui por outros caracteres
@@ -65,7 +65,7 @@ def cripto(texto, cript):
     criptografia.write(substituicao)
     criptografia.close()
 
-    # Exibiçao da mensagem sobre salvamento do arquivo e a chave criptografica para o usuário
+    # Exibição da mensagem sobre salvamento do arquivo e a chave criptográfica para o usuário
     print('\n Texto criptografado salvo em arquivo: Texto criptografado.txt','\n\n Sua chave para descriptografia é: ', chave)
     
 
@@ -75,9 +75,9 @@ M = L // 2
 D = M
 
 # Modulo para leitura do arquivo criptografado e descriptografia deste arquivo
-def descript(dcript, descriptografia, totalCharactere, chave):
+def descriptografar(dcript, descriptografia, totalCharactere, chave):
     # Leitura do arquivo
-    # Tratamento de erro para que, caso o usuario tente selecionar para descriptografar sem houver um arquivo criptografado, irá retornar ao menu
+    # Tratamento de erro para que, caso o usuário tente selecionar para descriptografar sem houver um arquivo criptografado, irá retornar ao menu
     try:
         Dcript_ARQ = open('Texto criptografado.txt','r')
         descriptografia = descriptografia + Dcript_ARQ.readline()
@@ -94,7 +94,7 @@ def descript(dcript, descriptografia, totalCharactere, chave):
         M = L // 2
         D = M
 
-        # Solicitação da chave criptografica para  a descriptografia
+        # Solicitação da chave criptográfica para  a descriptografia
         for CONT in range(0,1):
             chave = input('\n\n Insira a chave para descriptografar: \n\n >>> ')
             if chave != str(totalCharactere * 2357):
@@ -106,7 +106,7 @@ def descript(dcript, descriptografia, totalCharactere, chave):
             
             # DUPLA descriptografia: Primeiramente irá reverter a substituição de caracteres, para que assim desembaralhe o texto
 
-            # Descriptografia: SUBSTITUIÇÃO
+            # descriptografar: SUBSTITUIÇÃO
             subs  = {'8': '¨', '7': '°', '6': '÷', '4': '}', '3': '|', '2': 'y', '1': '_', '0': ']', 'Z': '[', 'Y': '@',
                     'X': '>', 'W': '<', 'V': '/', 'U': '-', 'T': '+', 'S': '*', 'R': ')', 'Q': '(', 'P': '&', 'O': '%',
                     'N': '$', 'M': '{', 'Ñ': '˜', 'ñ': 'ˆ', 'ç': '„', 'Ç': '”', 'Ù': '“', 'Û': '’', 'Ú': '‘', 'ú': '´',
@@ -128,7 +128,7 @@ def descript(dcript, descriptografia, totalCharactere, chave):
 
 
 
-            # Descriptografia: DESEMBARALHAMENTO
+            # descriptografar: DESEMBARALHAMENTO
 
             # Caso o total de caracteres do texto seja IMPAR
             if totalCharactere % 2 != 0:
